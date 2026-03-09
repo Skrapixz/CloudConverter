@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CloudConverter</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="coi-serviceworker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.7/dist/umd/ffmpeg.js"></script>
+    <script src="https://unpkg.com/@ffmpeg/util@0.12.1/dist/umd/index.js"></script>
+</head>
+<body>
+    <div id="canvas-container"></div>
+
+    <div class="glass-panel">
+        <h1>CloudConverter</h1>
+        <p class="subtitle">Transformez vos vidéos en magie sonore (.wav)</p>
+        
+        <div class="input-group">
+            <label>1. Vidéo à convertir</label>
+            <input type="file" id="videoInput" accept="video/*">
+        </div>
+
+        <div class="input-group">
+            <label>2. Métadonnées (Optionnel)</label>
+            <input type="text" id="metaTitle" placeholder="Titre de la piste">
+            <input type="text" id="metaArtist" placeholder="Nom de l'artiste">
+        </div>
+
+        <div class="input-group">
+            <label>3. Pochette (Cover)</label>
+            <input type="file" id="coverInput" accept="image/*">
+        </div>
+
+        <button id="convertBtn">Convertir le fichier</button>
+
+        <div id="progressContainer" class="hidden">
+            <p id="statusText">Initialisation du moteur...</p>
+            <div class="progress-bar-bg">
+                <div id="progressBar"></div>
+            </div>
+        </div>
+
+        <div id="downloadContainer" class="hidden">
+            <a id="downloadLink" href="#" download="output.wav">Télécharger votre .wav</a>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
